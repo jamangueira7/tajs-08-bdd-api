@@ -7,7 +7,7 @@
 </p>
 <br>
 
-# TAJS - TDD e BDD com API
+# TAJS - BDD com API
 
 ## 🚀 Tecnologias
 
@@ -16,6 +16,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [NodeJs](https://nodejs.org/en) v22.2.0
 - [NPM](https://www.npmjs.com/) 10.7.0
 - [NestJS](https://nestjs.com/) - 10.3.2
+- [Cucumber](https://cucumber.io/) - 10.0.1
 
 ## 💻 Projeto
 
@@ -43,7 +44,7 @@ cd tajs-erickwendel
 e então Restaure os pacotes:
 
 ```shell
-cd aula07-tdd-bdd-api
+cd aula08-bdd-api
 npm ci --silent
 ```
 
@@ -61,6 +62,7 @@ ou apenas executá-los
 ```shell
 npm run strat
 ```
+
 
 ### Depuração e Live reload no VSCode
 

@@ -37,7 +37,7 @@ Then(`I request the API with the user's ID "1"`, async function() {
 Then(`I should receive a JSON response with the user's details "1"`, async function() {
     const expectedUser = {
         "birthDay": "2000-01-01",
-        "category": "young",
+        "category": "young-adult",
         "id": _context.createUserData.id,
         "name": "Erick Wendel",
     }

@@ -20,10 +20,40 @@ function getUserCategory(birthDay) {
 
     return 'senior'
 }
+
+function checkDate(date) {
+    const dateParse = new Date(date)
+    if(isNaN(dateParse)) {
+        return false
+    }
+
+    if(dateParse.getFullYear() < 1910) {
+        return false
+    }
+    if(dateParse.getMonth() < 1 && dateParse.getMonth() > 12) {
+        return false
+    }
+
+    if(dateParse.getDay() < 1 && dateParse.getDay() > 31) {
+        return false
+    }
+    return true
+}
+
 const server = createServer(async (request, response) => {
     try {
         if (request.url == '/users' && request.method === 'POST') {
+            
             const user = JSON.parse(await once(request, 'data'))
+            
+            if(user.name == '') {
+                throw new Error('Name is empty')
+            }
+
+            if(!checkDate(user.birthDay)) {
+                throw new Error('Invalid date')
+            }
+            
             const updatedUser = {
                 ...user,
                 id: randomUUID(),
@@ -45,7 +75,10 @@ const server = createServer(async (request, response) => {
             return;
         }
     } catch(error) {
-        if(error.message.includes('18yo')) {
+        if(error.message.includes('18yo') 
+            || error.message.includes('date') 
+            || error.message.includes('empty')
+        ) {
             response.writeHead(400, {
                 'Content-Type': 'application/json'
             })

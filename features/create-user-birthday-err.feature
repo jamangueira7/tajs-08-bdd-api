@@ -9,3 +9,4 @@ Feature: Create Users API - Geral
       | name  | birthDay   |
       | Eve   | 2022-01-32 |
     Then I should receive an error message that the birth date is invalid
+    And the user's category should be "adult" "2"

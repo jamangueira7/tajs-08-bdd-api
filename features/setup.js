@@ -1,5 +1,5 @@
 import { Given, AfterAll } from '@cucumber/cucumber'
-import { server} from '../src/api.js'
+import { server } from '../src/api.js'
 import sinon from 'sinon'
 
 let _testServer
@@ -19,9 +19,11 @@ AfterAll(done => {
 
 Given('I have a running server', async function() {
     //Evitar subir 2 servidores
-    if(_testServer) return;
-    _testServer = server.listen()
-    await waitForServerStatus(_testServer)
+    if(!_testServer) {
+        _testServer = server.listen();
+        await waitForServerStatus(_testServer)
+    };    
+
     const serverInfo = _testServer.address()
     this.testServerAddress = `http://localhost:${serverInfo.port}`
 })

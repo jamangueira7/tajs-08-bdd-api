@@ -1,5 +1,7 @@
 Feature: Create Users API
+
   Background:
+  
     Given I have a running server
     Given The current date is "2023-11-23T00:00"
 
